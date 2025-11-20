@@ -1,317 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Manan Awasthi | Data Scientist + Analyst</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manan Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ---------- Base Styling ---------- */
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --card: #f8fafc;
+  --muted: #64748b;
+  --glass: rgba(255,255,255,0.5);
+  --transition: 0.35s ease;
+}
 
-  <style>
-    :root{
-      --primary:#2563eb;
-      --primary-dark:#1e40af;
-      --bg:#f8fafc;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --glass: rgba(255,255,255,0.85);
-    }
+html {
+  transition: background var(--transition), color var(--transition);
+}
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,#fbfdff 0%, #f2f7ff 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
 
-    .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: sticky;
+  top: 0;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  transition: var(--transition);
+}
 
-    /* Header */
-    header{
-      position:fixed;top:0;left:0;right:0;
-      background:var(--glass);
-      backdrop-filter: blur(8px);
-      box-shadow:0 6px 20px rgba(18,36,80,0.06);
-      z-index:1100;
-    }
-    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
-    .logo{font-weight:700;color:var(--primary);font-size:1.3rem}
-    .nav-links{display:flex;gap:20px;list-style:none}
-    .nav-links a{text-decoration:none;color:var(--text);font-weight:500}
-    .nav-links a:hover{color:var(--primary)}
-    .mobile-toggle{display:none;cursor:pointer}
+/* Smooth fade animation */
+.fade {
+  animation: fadeIn 0.6s ease;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
 
-    /* Hero */
-    .hero{padding:140px 0 70px;text-align:center}
-    .hero h1{font-size:3.2rem;margin-bottom:10px}
-    .hero p{color:var(--muted);font-size:1.1rem;margin-bottom:18px}
-    .cta{display:inline-flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      padding:12px 26px;border-radius:40px;text-decoration:none;font-weight:600;
-      background:var(--primary);color:#fff;box-shadow:0 10px 30px rgba(37,99,235,0.18);
-      transition:transform .22s ease,box-shadow .22s ease;
-    }
-    .btn.alt{background:#0f172a;color:#fff}
-    .btn:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,24,48,0.18)}
+.card {
+  background: var(--card);
+  padding: 25px;
+  margin: 20px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  transition: var(--transition);
+}
 
-    /* Section Titles */
-    section{padding:80px 0}
-    h2{font-size:2rem;text-align:center;margin-bottom:36px;color:var(--text)}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+}
 
-    /* Projects */
-    .projects-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;
-    }
-    .card{
-      background:var(--card);border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(14,30,60,0.06);
-      transition:transform .2s ease,box-shadow .2s ease;
-      overflow:hidden;
-    }
-    .card:hover{transform:translateY(-8px);box-shadow:0 22px 50px rgba(14,30,60,0.10)}
-    .card .media{height:180px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;margin-bottom:16px}
-    .project-title{font-size:1.15rem;font-weight:600;margin-bottom:8px}
-    .project-desc{color:var(--muted);margin-bottom:10px}
-    .project-tech{color:var(--primary);font-weight:600;margin-bottom:12px;display:inline-block}
+.btn {
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: var(--transition);
+}
 
-    /* Contact */
-    .contact{background:transparent}
-    .social{display:flex;gap:14px;justify-content:center;margin-top:12px}
-    .social a{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#e9eefc;color:var(--primary);text-decoration:none}
-    .social a:hover{background:var(--primary);color:#fff;transform:translateY(-6px)}
+.download-btn {
+  background: #2563eb;
+  color: white;
+}
 
-    /* CV Modal */
-    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.7);display:flex;align-items:center;justify-content:center;padding:24px;z-index:1200;opacity:0;pointer-events:none;transition:opacity .2s ease}
-    .modal.open{opacity:1;pointer-events:auto}
-    .modal-box{background:#fff;border-radius:12px;max-width:960px;width:100%;max-height:86vh;overflow:auto;padding:28px;position:relative;box-shadow:0 30px 80px rgba(8,12,40,0.35)}
-    .close-btn{position:absolute;right:18px;top:14px;font-size:22px;background:transparent;border:none;cursor:pointer;color:#667085}
-    .cv-header{text-align:center;margin-bottom:18px}
-    .cv-row{display:flex;gap:18px;flex-wrap:wrap}
-    .cv-left{flex:1;min-width:240px}
-    .cv-right{flex:2;min-width:260px}
-    .cv-section{margin-bottom:18px}
-    .cv-section h4{margin-bottom:8px;color:var(--primary)}
-    .download-actions{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:12px}
+.download-btn:hover {
+  transform: scale(1.05);
+}
 
-    /* small */
-    @media(max-width:800px){
-      .nav-links{display:none}
-      .mobile-toggle{display:block}
-      .hero h1{font-size:2.4rem}
-      .card .media{height:140px;font-size:2.2rem}
-      .cv-row{flex-direction:column}
-      .modal-box{padding:18px}
-    }
+/* ---------- Dark Mode ---------- */
+.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --card: #1e293b;
+  --muted: #94a3b8;
+  --glass: rgba(15,23,42,0.6);
+}
 
-    /* Animations (stagger) */
-    .reveal{opacity:0;transform:translateY(26px);transition:all .6s cubic-bezier(.2,.9,.3,1)}
-    .reveal.visible{opacity:1;transform:none}
-  </style>
+.dark-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.dark-btn:hover {
+  transform: rotate(-20deg) scale(1.1);
+}
+
+/* Smooth theme switching */
+.dark * {
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+</style>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo">MA</div>
 
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+<body class="fade">
 
-        <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
-      </nav>
-    </div>
-  </header>
+<!-- NAVBAR -->
+<header>
+  <h2>Manan Portfolio</h2>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1 class="reveal">Manan Awasthi</h1>
-      <p class="reveal" style="transition-delay:0.06s">Data Scientist + Analyst</p>
+  <!-- Dark Mode Button -->
+  <button id="darkToggle" class="dark-btn">
+    <i class="fas fa-moon"></i>
+  </button>
+</header>
 
-      <div class="cta" style="margin-top:20px">
-        <a class="btn reveal" style="transition-delay:0.12s" href="javascript:void(0)" id="openCvBtn"><i class="far fa-file"></i> View My CV</a>
-        <a class="btn alt reveal" style="transition-delay:0.18s" href="#projects">My Projects</a>
-        <!-- download link points to Manan_CV.pdf in repo root -->
-        <a class="btn reveal" style="background:#fff;color:var(--primary);border:1px solid #e6eefc;transition-delay:0.24s" id="downloadCvBtn" href="Manan_CV.pdf" download><i class="fas fa-download"></i> Download CV</a>
-      </div>
-    </div>
-  </section>
+<!-- MAIN CONTENT -->
+<div class="card fade">
+  <h2>Hello, I'm Manan</h2>
+  <p>Welcome to my portfolio.</p>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="reveal">Featured Projects</h2>
+  <!-- Download CV -->
+  <a href="Manan cv 3 year.pdf" download>
+    <button class="btn download-btn">
+      <i class="fas fa-download"></i> Download CV
+    </button>
+  </a>
+</div>
 
-      <div class="projects-grid">
-        <div class="card reveal" data-delay="0.06">
-          <div class="media"><i class="fas fa-brain"></i></div>
-          <div class="project-title">Intelligent Resume Classifier & Skill Extractor</div>
-          <div class="project-desc">AI tool that classifies resumes & extracts skills with <strong>92% accuracy</strong>.</div>
-          <div class="project-tech">Python • NLP • Scikit-learn • Streamlit • Power BI</div>
-          <div style="margin-top:12px">
-            <a class="btn" href="https://resume-classifier-lepjtcajg4gtsnc9ldmoapp.streamlit.app/" target="_blank">Live Demo</a>
-            <a class="btn" style="background:#fff;color:var(--primary);border:1px solid #e6eefc;margin-left:10px" href="https://github.com/mananawasthi56" target="_blank">GitHub</a>
-          </div>
-        </div>
+<script>
+/* ---------- Dark Mode Toggle ---------- */
+const toggle = document.getElementById("darkToggle");
 
-        <!-- add more project cards here as needed -->
-      </div>
-    </div>
-  </section>
+toggle.addEventListener("click", () => {
+  document.documentElement.classList.toggle("dark");
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="reveal">Get In Touch</h2>
-      <p style="text-align:center;color:var(--muted);max-width:760px;margin:0 auto" class="reveal">Open to internships, freelance work & collaborations — email or connect on LinkedIn.</p>
+  // Switch icon
+  toggle.innerHTML = document.documentElement.classList.contains("dark") 
+    ? '<i class="fas fa-sun"></i>'
+    : '<i class="fas fa-moon"></i>';
 
-      <div class="social" style="margin-top:18px">
-        <a href="https://github.com/mananawasthi56" target="_blank" class="reveal"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/" target="_blank" class="reveal"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:mananawasthi2005@gmail.com" class="reveal"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-  </section>
+  // Save mode
+  localStorage.setItem("theme", 
+    document.documentElement.classList.contains("dark") ? "dark" : "light"
+  );
+});
 
-  <!-- CV Modal (full resume + preview) -->
-  <div id="cvModal" class="modal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cvTitle">
-      <button class="close-btn" id="closeModal" aria-label="Close CV">&times;</button>
+// Load saved theme
+if(localStorage.getItem("theme") === "dark"){
+  document.documentElement.classList.add("dark");
+  toggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+</script>
 
-      <div id="cvContent">
-        <div class="cv-header">
-          <h3 id="cvTitle" style="margin-bottom:6px;color:var(--primary)">MANAN AWASTHI</h3>
-          <p style="color:var(--muted)"><strong>Email:</strong> mananawasthi2005@gmail.com • <strong>Phone:</strong> +91-9317408375</p>
-
-          <div class="download-actions">
-            <!-- Download button inside modal as well -->
-            <a class="btn" href="Manan_CV.pdf" download><i class="fas fa-download"></i> Download CV</a>
-            <a class="btn" style="background:#fff;color:var(--primary);border:1px solid #e6eefc" id="openInNewTab" target="_blank" href="Manan_CV.pdf">Open in New Tab</a>
-          </div>
-        </div>
-
-        <div class="cv-row" style="margin-top:18px">
-          <div class="cv-left">
-            <div class="cv-section">
-              <h4>SKILLS</h4>
-              <p><strong>Languages:</strong> C++, Python, Java, SQL, C</p>
-              <p><strong>Frameworks:</strong> Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn</p>
-              <p><strong>Tools:</strong> Power BI, Excel, AWS, Tableau</p>
-              <p><strong>Soft:</strong> Problem-Solving, Teamwork, Project Mgmt</p>
-            </div>
-
-            <div class="cv-section">
-              <h4>CERTIFICATIONS</h4>
-              <ul>
-                <li>Cloud Computing — NPTEL (Mar 2025)</li>
-                <li>Mastering C — CSE Pathshala (Jun 2025)</li>
-                <li>Automation Developer — UiPath (Aug 2025)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="cv-right">
-            <div class="cv-section">
-              <h4>PROJECTS</h4>
-              <p><strong>Intelligent Resume Classifier & Skill Extractor</strong><br>
-                • Built ML system to classify resumes & extract skills.<br>
-                • Processed 700+ resumes; created Power BI dashboard; deployed Streamlit app.<br>
-                • <strong>92% accuracy</strong> • <strong>Tech:</strong> Python, NLP, Scikit-learn, Streamlit, Power BI
-              </p>
-
-              <p><strong>Data-Driven Business Insights Dashboard</strong><br>
-                • Built full analytics pipeline using SQL, Python & Power BI to accelerate reporting by 30%.
-              </p>
-            </div>
-
-            <div class="cv-section">
-              <h4>EDUCATION</h4>
-              <p><strong>B.Tech (CSE)</strong> — Lovely Professional University • CGPA: 7.12 (2023–Present)</p>
-              <p><strong>Intermediate</strong> — Army Public School, Jalandhar • 93% (2022–23)</p>
-              <p><strong>Matriculation</strong> — Bharti Vidyapeeth School • 87% (2020–21)</p>
-            </div>
-
-            <div class="cv-section">
-              <h4>TRAINING</h4>
-              <p>Summer Internship — LPU: Practical ML training, model evaluation & hands-on projects.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer style="padding:40px 0;text-align:center;color:#64748b">
-    © 2025 Manan Awasthi — Data Scientist & Analyst
-  </footer>
-
-  <script>
-    // Mobile nav toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
-    mobileToggle && mobileToggle.addEventListener('click', ()=> {
-      navLinks.classList.toggle('active');
-      // small visual for opened menu on mobile
-      if(navLinks.style.display === 'flex') navLinks.style.display = '';
-      else navLinks.style.display = 'flex';
-    });
-
-    // Modal open/close
-    const openCvBtn = document.getElementById('openCvBtn');
-    const cvModal = document.getElementById('cvModal');
-    const closeModal = document.getElementById('closeModal');
-
-    openCvBtn && openCvBtn.addEventListener('click', ()=> {
-      cvModal.classList.add('open');
-      cvModal.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-    });
-
-    closeModal && closeModal.addEventListener('click', ()=> {
-      cvModal.classList.remove('open');
-      cvModal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-    });
-
-    window.addEventListener('keydown', (e)=> {
-      if(e.key === 'Escape' && cvModal.classList.contains('open')){
-        cvModal.classList.remove('open');
-        cvModal.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // open in new tab in modal
-    const openInNewTab = document.getElementById('openInNewTab');
-    // progressive reveal animation
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries, obs)=> {
-      entries.forEach((entry)=> {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          entry.target.style.transitionDelay = (entry.target.datasetDelay || 0.06) + 's';
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {threshold: 0.12});
-
-    reveals.forEach((el, i)=> {
-      el.datasetDelay = (i * 0.06).toFixed(2);
-      io.observe(el);
-    });
-
-    // download fallback: if Manan_CV.pdf missing, show alert (user should upload file)
-    document.getElementById('downloadCvBtn')?.addEventListener('click', (e)=>{
-      // browser will attempt to download Manan_CV.pdf from repo; if 404, user will see 404.
-      // we keep it simple — instruct user in deployment steps to add Manan_CV.pdf to repo root.
-    });
-  </script>
 </body>
 </html>
