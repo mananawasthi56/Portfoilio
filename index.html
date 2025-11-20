@@ -1,112 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manan Awasthi | Data Scientist + Analyst</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root{--bg:#0a0a1a;--card:rgba(20,20,50,0.7);--accent:#00d4ff;--pink:#ff00c8;--text:#e0e0ff;--gray:#b0b0ff}
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-        .container{max-width:1200px;margin:0 auto;padding:0 20px}
-        header{min-height:100vh;background:linear-gradient(135deg,#1a0033 0%,#0f0f2d 100%);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
-        header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><defs><radialGradient id="g"><stop offset="0%" stop-color="%2300d4ff"/><stop offset="100%" stop-color="%23ff00c8"/></radialGradient></defs><circle cx="400" cy="400" r="300" fill="url(%23g)" opacity="0.1"/></svg>');background-size:200%;animation:pulse 8s infinite}
-        @keyframes pulse{0%,100%{opacity:0.1}50%{opacity:0.2}}
-        .hero h1{font-size:4.5rem;background:linear-gradient(90deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:15px}
-        .hero p{font-size:1.6rem;color:var(--gray);margin:20px 0}
-        .btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--pink));color:white;padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:600;margin:12px;transition:all .4s;box-shadow:0 8px 25px rgba(0,212,255,.3)}
-        .btn:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(255,0,200,.4)}
-        section{padding:100px 0}
-        h2{font-size:3rem;text-align:center;margin-bottom:70px;background:linear-gradient(90deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:40px}
-        .project-card{background:var(--card);border-radius:20px;overflow:hidden;backdrop-filter:blur(12px);border:1px solid rgba(0,212,255,.3);transition:all .5s}
-        .project-card:hover{transform:translateY(-20px);box-shadow:0 30px 60px rgba(0,212,255,.4)}
-        .project-img{height:240px;background:linear-gradient(45deg,#1a0033,#2d0055);display:flex;align-items:center;justify-content:center}
-        .project-img i{font-size:6rem;color:var(--accent)}
-        .project-content{padding:30px}
-        .project-title{font-size:1.8rem;color:var(--accent);margin-bottom:15px}
-        .project-desc{color:var(--gray);line-height:1.8;margin-bottom:20px}
-        .tech{color:var(--accent);font-weight:500;margin-bottom:20px}
-        .live-btn{background:linear-gradient(90deg,var(--accent),var(--pink));color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold;display:inline-block}
-        .social-icons{margin-top:40px}
-        .social-icons a{color:white;font-size:2rem;margin:0 15px;transition:.3s}
-        .social-icons a:hover{transform:translateY(-8px);color:var(--accent)}
-        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.95);align-items:center;justify-content:center}
-        .modal-content{background:#16213e;padding:40px;border-radius:20px;max-width:900px;width:90%;max-height:90vh;overflow-y:auto;border:2px solid var(--accent);position:relative}
-        .close{position:absolute;top:15px;right:25px;font-size:40px;color:#aaa;cursor:pointer}
-        .close:hover{color:white}
-        footer{text-align:center;padding:60px;background:#0a0a1a;color:var(--gray);font-size:1.1rem}
-        @media(max-width:768px){.hero h1{font-size:3rem}.projects-grid{grid-template-columns:1fr}}
+        :root {
+            --primary: #00d4ff;
+            --gradient: linear-gradient(135deg, #e0f7fa 0%, #f0f9ff 100%);
+            --text: #1e293b;
+            --muted: #475569;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        .logo { font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .mobile-menu { display: none; cursor: pointer; }
+        .mobile-menu span {
+            display: block; width: 28px; height: 3px; background: #333;
+            margin: 6px 0; transition: 0.3s; border-radius: 3px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #0066ff);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,212,255,0.4);
+        }
+        .btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,102,255,0.5);
+        }
+
+        section { padding: 100px 0; }
+        h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 0 0 4rem;
+            color: var(--text);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.4s;
+        }
+        .project-card:hover { transform: translateY(-15px); }
+        .project-img {
+            height: 220px;
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+        .project-content { padding: 2rem; }
+        .project-title { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--text); }
+        .project-desc { color: var(--muted); margin-bottom: 1rem; }
+        .project-tech { color: var(--primary); font-weight: 500; margin-bottom: 1.2rem; }
+        .live-btn {
+            background: linear-gradient(90deg, #00d4ff, #0066ff);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Contact Section with Social Links */
+        .contact {
+            background: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px; height: 60px;
+            background: var(--gradient);
+            color: var(--primary);
+            font-size: 1.8rem;
+            border-radius: 50%;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,212,255,0.2);
+        }
+        .social-links a:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,102,255,0.4);
+        }
+
+        /* Modal for CV */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .close {
+            position: absolute;
+            top: 20px; right: 30px;
+            font-size: 40px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close:hover { color: #333; }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: #0f172a;
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 2.8rem; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <div class="hero">
-            <h1>Manan Awasthi</h1>
-            <p>Data Scientist + Analyst</p>
-            <div style="margin-top:40px">
-                <a href="javascript:void(0)" onclick="openModal()" class="btn">View My Resume</a>
-                <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/" target="_blank" class="btn">LinkedIn</a>
+        <nav class="container">
+            <div class="logo">MA</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span><span></span><span></span>
             </div>
-
-            <!-- Social Icons -->
-            <div class="social-icons">
-                <a href="https://github.com/mananawasthi56" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:mananawasthi2005@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
+        </nav>
     </header>
 
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Manan Awasthi</h1>
+            <p>Data Scientist + Analyst</p>
+            <div style="margin-top: 40px;">
+                <a href="javascript:void(0)" onclick="openCV()" class="btn">View My CV</a>
+                <a href="#projects" class="btn" style="background: #1e293b; margin-left: 1rem;">My Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
     <section id="projects">
         <div class="container">
             <h2>Featured Project</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-img"><i class="fas fa-brain"></i></div>
+                    <div class="project-img">
+                        <i class="fas fa-brain"></i>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Intelligent Resume Classifier & Skill Extractor</h3>
                         <p class="project-desc">
-                            Production-grade AI tool that classifies any resume into 300+ global job roles and extracts skills with <strong>92% accuracy</strong> using NLP + Scikit-learn.
+                            AI-powered tool that classifies any resume into 300+ job roles and extracts skills with <strong>92% accuracy</strong>.
                         </p>
-                        <p class="tech">Python • Pandas • NLP • Scikit-learn • Streamlit • Power BI</p>
-                        <a href="https://resume-classifier-lepjtcajg4gtsnc9ldmoapp.streamlit.app/" target="_blank" class="live-btn">Live Demo</a>
+                        <p class="project-tech">Python • NLP • Scikit-learn • Streamlit • Power BI</p>
+                        <a href="https://resume-classifier-lepjtcajg4gtsnc9ldmoapp.streamlit.app/" target="_blank" class="live-btn">
+                            Live Demo
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RESUME MODAL -->
-    <div id="resumeModal" class="modal">
+    <!-- Contact Section with Social Links -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p style="font-size: 1.2rem; color: var(--muted); max-width: 600px; margin: 0 auto 3rem;">
+                I'm open to internships, freelance projects, or just a chat about data!
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/mananawasthi56" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:mananawasthi2005@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 style="text-align:center;color:#00d4ff;margin-bottom:30px">Manan Awasthi – Full Resume</h2>
-            <div style="background:white;color:#000;padding:40px;border-radius:15px;line-height:2">
-                <h3 style="text-align:center;color:#00d4ff">MANAN AWASTHI</h3>
-                <p style="text-align:center">
-                    mananawasthi2005@gmail.com | +91-9317408375<br>
-                    <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/">linkedin.com/in/manan-awasthi-88070018a</a> | 
-                    <a href="https://github.com/mananawasthi56">github.com/mananawasthi56</a>
+            <span class="close" onclick="closeCV()">&times;</span>
+            <h2 style="text-align:center; color:#00d4ff; margin-bottom:30px;">Manan Awasthi - Full Resume</h2>
+            <div style="background:#f8fafc; padding:40px; border-radius:15px; color:#1e293b;">
+                <h3 style="text-align:center; font-size:1.8rem; margin-bottom:20px;">MANAN AWASTHI</h3>
+                <p style="text-align:center; margin-bottom:30px;">
+                    <strong>Email:</strong> mananawasthi2005@gmail.com<br>
+                    <strong>Phone:</strong> +91-9317408375<br>
+                    LinkedIn: <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/">linkedin.com/in/manan-awasthi-88070018a</a><br>
+                    GitHub: <a href="https://github.com/mananawasthi56">github.com/mananawasthi56</a>
                 </p>
-                <hr style="margin:30px 0">
+                <hr style="margin:30px 0; border-color:#e2e8f0;">
+                
                 <h3>SKILLS</h3>
-                <ul>
+                <ul style="margin:15px 0 25px 20px;">
                     <li><strong>Languages:</strong> Python, C++, Java, SQL, C</li>
-                    <li><strong>ML/Data:</strong> Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn</li>
+                    <li><strong>Data Science:</strong> Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn</li>
                     <li><strong>Tools:</strong> Power BI, Tableau, Excel, AWS</li>
-                    <li><strong>Soft Skills:</strong> Problem-Solving, Leadership, Project Management</li>
+                    <li><strong>Soft Skills:</strong> Problem-Solving, Team Collaboration, Project Management</li>
                 </ul>
+
                 <h3>PROJECTS</h3>
                 <p><strong>Intelligent Resume Classifier & Skill Extractor</strong> → <a href="https://resume-classifier-lepjtcajg4gtsnc9ldmoapp.streamlit.app/" target="_blank">Live App</a></p>
-                <p>Data-Driven Business Insights Dashboard → Power BI + SQL + Python</p>
+                <p>• Achieved 92% accuracy • Deployed on Streamlit Cloud</p>
+                <p><strong>Data-Driven Business Insights Dashboard</strong> → Power BI + SQL + Python</p>
+
                 <h3>EDUCATION</h3>
-                <p><strong>B.Tech CSE</strong> – Lovely Professional University (2023–Present) | CGPA: 7.12</p>
+                <p><strong>B.Tech Computer Science & Engineering</strong><br>
+                Lovely Professional University • 2023–Present • CGPA: 7.12</p>
+
                 <h3>CERTIFICATIONS</h3>
-                <ul>
+                <ul style="margin-left:20px;">
                     <li>Cloud Computing – NPTEL</li>
                     <li>Automation Developer – UiPath</li>
                     <li>Summer ML Internship – LPU</li>
@@ -116,13 +335,44 @@
     </div>
 
     <footer>
-        <p>© 2025 Manan Awasthi • Data Scientist + Analyst</p>
+        <p>&copy; 2025 Manan Awasthi • Data Scientist + Analyst
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        function openModal(){document.getElementById("resumeModal").style.display="flex"}
-        function closeModal(){document.getElementById("resumeModal").style.display="none"}
-        window.onclick=e=>{if(e.target===document.getElementById("resumeModal"))closeModal()}
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // CV Modal Functions
+        function openCV() {
+            document.getElementById('cvModal').classList.add('active');
+        }
+        function closeCV() {
+            document.getElementById('cvModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('cvModal');
+            if (event.target == modal) {
+                closeCV();
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
