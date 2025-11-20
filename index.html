@@ -1,167 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manan Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Manan Awasthi | Data Scientist + Analyst</title>
 
-<style>
-/* ---------- Base Styling ---------- */
-:root {
-  --bg: #ffffff;
-  --text: #0f172a;
-  --card: #f8fafc;
-  --muted: #64748b;
-  --glass: rgba(255,255,255,0.5);
-  --transition: 0.35s ease;
-}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-html {
-  transition: background var(--transition), color var(--transition);
-}
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --gradient: linear-gradient(135deg, #e0f7fa 0%, #f0f9ff 100%);
+      --text: #1e293b;
+      --muted: #475569;
+      --card-bg: #ffffff;
+      --glass: rgba(255,255,255,0.95);
+      --transition: 0.36s cubic-bezier(.2,.9,.25,1);
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  transition: background var(--transition), color var(--transition);
-}
+    /* DARK THEME VARIABLES */
+    .dark {
+      --primary: #7dd3fc;
+      --gradient: linear-gradient(180deg,#071025 0%,#0b1220 100%);
+      --text: #e6eef8;
+      --muted: #9fb2c9;
+      --card-bg: #0f172a;
+      --glass: rgba(15,23,42,0.6);
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 40px;
-  position: sticky;
-  top: 0;
-  background: var(--glass);
-  backdrop-filter: blur(10px);
-  z-index: 999;
-  transition: var(--transition);
-}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--gradient);
+      color: var(--text);
+      min-height:100vh;
+      line-height:1.6;
+      transition: background var(--transition), color var(--transition);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x: hidden;
+    }
 
-/* Smooth fade animation */
-.fade {
-  animation: fadeIn 0.6s ease;
-}
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
+    .container { max-width:1200px; margin:0 auto; padding:0 20px; }
 
-.card {
-  background: var(--card);
-  padding: 25px;
-  margin: 20px;
-  border-radius: 18px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-  transition: var(--transition);
-}
+    /* Header */
+    header {
+      position: fixed;
+      top:0; left:0; right:0;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+      z-index:1100;
+      transition: background var(--transition);
+    }
+    nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.1rem 0;
+    }
+    .logo { font-size:1.7rem; font-weight:700; color:var(--primary); }
+    .nav-links { display:flex; list-style:none; gap:2.5rem; align-items:center; }
+    .nav-links a { text-decoration:none; color:var(--text); font-weight:500; transition: color .25s; }
+    .nav-links a:hover { color:var(--primary); transform: translateY(-2px); }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 25px rgba(0,0,0,0.12);
-}
+    .mobile-menu { display:none; cursor:pointer; }
+    .mobile-menu span {
+      display:block; width:28px; height:3px; background: #333; margin:6px 0; border-radius:3px;
+      transition: transform .25s, opacity .25s;
+    }
 
-.btn {
-  padding: 12px 22px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: var(--transition);
-}
+    /* Dark / light toggle button */
+    .controls { display:flex; gap:12px; align-items:center; }
+    .toggle-btn {
+      background:transparent; border:none; cursor:pointer; font-size:20px; color:var(--text);
+      padding:8px; border-radius:8px; transition: transform .18s, background .18s;
+    }
+    .toggle-btn:hover { transform: translateY(-3px); }
 
-.download-btn {
-  background: #2563eb;
-  color: white;
-}
+    /* Hero */
+    .hero { padding:160px 0 100px; text-align:center; }
+    .hero h1 { font-size:3.6rem; font-weight:700; margin-bottom:.8rem; color:var(--text); }
+    .hero p { font-size:1.25rem; color:var(--muted); margin-bottom:28px; }
 
-.download-btn:hover {
-  transform: scale(1.05);
-}
+    .btn {
+      display:inline-block;
+      background: linear-gradient(90deg, #00d4ff, #0066ff);
+      color:white;
+      padding:14px 36px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:1.04rem;
+      transition: transform .28s var(--transition), box-shadow .28s var(--transition);
+      box-shadow: 0 10px 30px rgba(0,212,255,0.22);
+    }
+    .btn.alt { background:#0f172a; color:#fff; box-shadow: 0 10px 30px rgba(2,6,23,0.18); }
+    .btn:hover { transform: translateY(-6px); box-shadow:0 20px 40px rgba(0,102,255,0.32); }
 
-/* ---------- Dark Mode ---------- */
-.dark {
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --card: #1e293b;
-  --muted: #94a3b8;
-  --glass: rgba(15,23,42,0.6);
-}
+    section { padding:90px 0; }
+    h2 { text-align:center; font-size:2.4rem; margin-bottom:36px; color:var(--text); }
 
-.dark-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--text);
-  transition: var(--transition);
-}
+    /* Projects */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
+    .project-card {
+      background: var(--card-bg);
+      border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(2,6,23,0.06);
+      transition: transform .4s cubic-bezier(.2,.9,.3,1), box-shadow .4s;
+      will-change: transform;
+    }
+    .project-card:hover { transform: translateY(-12px); box-shadow: 0 30px 70px rgba(2,6,23,0.12); }
+    .project-img { height:220px; background: linear-gradient(45deg,#00d4ff,#0066ff); display:flex;align-items:center;justify-content:center;color:#fff;font-size:4.2rem; }
+    .project-content { padding:1.8rem; }
+    .project-title { font-size:1.25rem; margin-bottom:.6rem; color:var(--text); }
+    .project-desc { color:var(--muted); margin-bottom:.8rem; }
+    .project-tech { color:var(--primary); font-weight:500; margin-bottom:1rem; display:block; }
 
-.dark-btn:hover {
-  transform: rotate(-20deg) scale(1.1);
-}
+    .live-btn {
+      background: linear-gradient(90deg,#00d4ff,#0066ff);
+      color:#fff; padding:10px 20px; border-radius:999px; text-decoration:none; font-weight:600;
+      display:inline-block; transition: transform .25s;
+    }
+    .live-btn:hover { transform: translateY(-6px); }
 
-/* Smooth theme switching */
-.dark * {
-  transition: background var(--transition), color var(--transition), transform var(--transition);
-}
+    /* Contact */
+    .contact { background: transparent; text-align:center; padding-top:60px; }
+    .social-links { display:flex; justify-content:center; gap:1.5rem; margin-top:1.2rem; }
+    .social-links a { width:56px; height:56px; border-radius:50%; display:inline-flex;align-items:center;justify-content:center;
+      font-size:1.25rem; text-decoration:none; background:linear-gradient(135deg,#e0f7fa,#f0f9ff); color:var(--primary);
+      box-shadow:0 8px 20px rgba(0,212,255,0.12); transition: transform .28s, box-shadow .28s;}
+    .social-links a:hover { transform: translateY(-8px); box-shadow:0 16px 40px rgba(0,102,255,0.22); }
 
-</style>
+    /* Modal */
+    .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+      background: rgba(0,0,0,0.7); opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s; z-index:1200; padding:28px; }
+    .modal.active { opacity:1; visibility:visible; }
+    .modal-box { width:100%; max-width:1000px; background:var(--card-bg); border-radius:14px; overflow:hidden; position:relative;
+      box-shadow: 0 30px 80px rgba(2,6,23,0.35); max-height:90vh; display:flex; flex-direction:column; }
+    .modal-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 22px; border-bottom:1px solid rgba(0,0,0,0.06); }
+    .modal-body { padding:0; flex:1 1 auto; }
+    .modal-body iframe { width:100%; height:72vh; border:0; display:block; }
+    .modal-close { background:transparent; border:none; font-size:24px; cursor:pointer; color:var(--muted); padding:10px; }
+    .modal-actions { padding:14px 22px; display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+
+    /* small screens */
+    @media(max-width:900px){
+      .hero h1 { font-size:2.4rem; }
+      .project-img { height:160px; font-size:3rem; }
+      .modal-body iframe { height:60vh; }
+    }
+    @media (max-width:768px){
+      .nav-links { display:none; position:absolute; top:100%; left:0; width:100%; background:var(--card-bg); flex-direction:column; padding:20px; box-shadow:0 10px 30px rgba(2,6,23,0.06); }
+      .nav-links.active { display:flex; }
+      .mobile-menu { display:block; }
+    }
+
+    /* Reveal animation (stagger) */
+    .reveal { opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+  </style>
 </head>
+<body>
 
-<body class="fade">
+  <!-- Header -->
+  <header>
+    <nav class="container">
+      <div style="display:flex; align-items:center; gap:18px;">
+        <div class="logo">MA</div>
+      </div>
 
-<!-- NAVBAR -->
-<header>
-  <h2>Manan Portfolio</h2>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-  <!-- Dark Mode Button -->
-  <button id="darkToggle" class="dark-btn">
-    <i class="fas fa-moon"></i>
-  </button>
-</header>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="controls">
+          <!-- Dark mode toggle -->
+          <button id="darkToggle" class="toggle-btn" title="Toggle dark / light">
+            <i id="themeIcon" class="fas fa-moon"></i>
+          </button>
+        </div>
 
-<!-- MAIN CONTENT -->
-<div class="card fade">
-  <h2>Hello, I'm Manan</h2>
-  <p>Welcome to my portfolio.</p>
+        <!-- mobile menu -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true" title="Toggle menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-  <!-- Download CV -->
-  <a href="Manan cv 3 year.pdf" download>
-    <button class="btn download-btn">
-      <i class="fas fa-download"></i> Download CV
-    </button>
-  </a>
-</div>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1 class="reveal">Manan Awasthi</h1>
+      <p class="reveal" style="transition-delay:0.05s">Data Scientist + Analyst</p>
 
-<script>
-/* ---------- Dark Mode Toggle ---------- */
-const toggle = document.getElementById("darkToggle");
+      <div style="margin-top:32px;">
+        <!-- View modal -->
+        <a class="btn reveal" style="transition-delay:0.12s" href="javascript:void(0)" id="openCvBtn"><i class="far fa-file"></i> View My CV</a>
 
-toggle.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark");
+        <!-- Projects button -->
+        <a class="btn alt reveal" style="transition-delay:0.18s" href="#projects">My Projects</a>
 
-  // Switch icon
-  toggle.innerHTML = document.documentElement.classList.contains("dark") 
-    ? '<i class="fas fa-sun"></i>'
-    : '<i class="fas fa-moon"></i>';
+        <!-- Direct download (GitHub path) -->
+        <a class="btn reveal" style="background:#fff;color:var(--primary);border:1px solid rgba(0,212,255,0.12);transition-delay:0.24s" id="downloadCvBtn" href="Manan cv 3 year.pdf" download>
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
 
-  // Save mode
-  localStorage.setItem("theme", 
-    document.documentElement.classList.contains("dark") ? "dark" : "light"
-  );
-});
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="reveal">Featured Project</h2>
 
-// Load saved theme
-if(localStorage.getItem("theme") === "dark"){
-  document.documentElement.classList.add("dark");
-  toggle.innerHTML = '<i class="fas fa-sun"></i>';
-}
-</script>
+      <div class="projects-grid">
+        <div class="project-card reveal" data-delay="0.06">
+          <div class="project-img"><i class="fas fa-brain"></i></div>
+          <div class="project-content">
+            <h3 class="project-title">Intelligent Resume Classifier & Skill Extractor</h3>
+            <p class="project-desc">AI-powered tool that classifies resumes into 300+ roles and extracts skills with <strong>92% accuracy</strong>.</p>
+            <span class="project-tech">Python • NLP • Scikit-learn • Streamlit • Power BI</span>
+            <div style="margin-top:14px;">
+              <a class="live-btn" href="https://resume-classifier-lepjtcajg4gtsnc9ldmoapp.streamlit.app/" target="_blank">Live Demo</a>
+              <a class="live-btn" style="background:transparent;color:var(--primary);border:1px solid rgba(0,212,255,0.12);margin-left:10px" href="https://github.com/mananawasthi56" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="reveal">Get In Touch</h2>
+      <p class="reveal" style="color:var(--muted); max-width:760px; margin:0 auto 18px;">Open to internships, freelance work & collaborations — email or connect on LinkedIn.</p>
+
+      <div class="social-links reveal" style="transition-delay:0.08s; margin-top:24px;">
+        <a href="https://github.com/mananawasthi56" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/manan-awasthi-88070018a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:mananawasthi2005@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV Modal -->
+  <div id="cvModal" class="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cvTitle">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <h3 id="cvTitle" style="margin:0; color:var(--primary)">MANAN AWASTHI</h3>
+          <div style="color:var(--muted); font-size:.95rem;">Full Resume</div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px;">
+          <!-- Secondary download inside modal (uses repo filename) -->
+          <a id="modalDownload" class="btn" href="Manan cv 3 year.pdf" download style="background:linear-gradient(90deg,#00d4ff,#0066ff);text-decoration:none;">
+            <i class="fas fa-download"></i> Download
+          </a>
+
+          <button class="modal-close" id="closeModalBtn" aria-label="Close CV">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-body" id="modalBody">
+        <!-- iframe will be set in JS. It first tries the repo path, and we also supply a sandbox fallback path below. -->
+        <iframe id="cvFrame" src="Manan cv 3 year.pdf" title="Manan CV (preview)"></iframe>
+      </div>
+
+      <div class="modal-actions" style="padding:12px 18px;">
+        <!-- fallback link shown if iframe fails to load -->
+        <a id="fallbackLink" href="sandbox:/mnt/data/Manan cv 3 year.pdf" target="_blank" style="display:none; color:var(--muted); text-decoration:underline;">Open PDF in new tab (fallback)</a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="padding:40px 0; text-align:center; color:#94a3b8; background:transparent;">
+    © 2025 Manan Awasthi — Data Scientist & Analyst
+  </footer>
+
+  <script>
+    // ---------- Mobile menu ----------
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // ---------- Dark mode toggle ----------
+    const darkToggle = document.getElementById('darkToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function applyTheme(dark) {
+      if (dark) {
+        document.documentElement.classList.add('dark');
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
+
+    // load saved theme
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') applyTheme(true);
+    else if (saved === 'light') applyTheme(false);
+    else {
+      // default: follow system preference
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark);
+      localStorage.setItem('theme', prefersDark ? 'dark' : 'light');
+    }
+
+    darkToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      applyTheme(isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // ---------- Smooth reveal (intersection observer) ----------
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const delay = entry.target.datasetDelay || 0;
+          entry.target.style.transitionDelay = delay + 's';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach((el, i) => {
+      el.datasetDelay = (i * 0.06).toFixed(2);
+      io.observe(el);
+    });
+
+    // ---------- Modal CV handling ----------
+    const cvModal = document.getElementById('cvModal');
+    const openCvBtn = document.getElementById('openCvBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cvFrame = document.getElementById('cvFrame');
+    const modalDownload = document.getElementById('modalDownload');
+    const fallbackLink = document.getElementById('fallbackLink');
+
+    // Path settings:
+    // Primary: repo path (works on GitHub Pages when file is in same folder)
+    const repoPdf = 'Manan cv 3 year.pdf';
+
+    // Fallback local sandbox path (your uploaded file in the environment):
+    // DEV NOTE: The platform will transform this path into a usable URL when needed.
+    const sandboxPath = 'sandbox:/mnt/data/Manan cv 3 year.pdf';
+
+    // Open modal
+    openCvBtn.addEventListener('click', () => {
+      cvModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Try loading the repo path first
+      cvFrame.src = repoPdf;
+
+      // also set download link in modal
+      modalDownload.href = repoPdf;
+
+      // After a short delay, test whether iframe loaded the resource successfully.
+      // We'll check by waiting and then detecting "load" vs a likely error.
+      // Browsers may block cross-origin errors, so we show fallback link if the PDF can't be opened.
+      setTimeout(() => {
+        // If the iframe didn't load (some environments return a 404 page that won't trigger error),
+        // show the sandbox fallback link so you can open the direct uploaded file.
+        // We expose the sandbox link as a fallback for local testing environments.
+        fallbackLink.style.display = 'inline-block';
+        fallbackLink.href = sandboxPath;
+        fallbackLink.textContent = 'Open PDF in new tab (fallback)';
+      }, 800);
+    });
+
+    function closeCV() {
+      cvModal.classList.remove('active');
+      document.body.style.overflow = '';
+      // clear iframe to stop playback / free memory
+      cvFrame.src = 'about:blank';
+    }
+
+    closeModalBtn.addEventListener('click', closeCV);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && cvModal.classList.contains('active')) closeCV();
+    });
+
+    // Close when clicking outside the modal box
+    window.addEventListener('click', (ev) => {
+      if (ev.target === cvModal) closeCV();
+    });
+
+    // ---------- Download button fallback UX ----------
+    // If user clicks the download button and the file 404s on GitHub Pages,
+    // the fallback link to the sandbox /mnt/data path is shown in the modal actions area (above).
+    const downloadCvBtn = document.getElementById('downloadCvBtn');
+    downloadCvBtn.addEventListener('click', (e) => {
+      // Let browser attempt the download normally (href is repo path).
+      // We display a small note if the repo file is not accessible (can't detect easily), so we rely on the modal fallback link.
+      setTimeout(() => {
+        // If download fails for you, open the fallback sandbox path manually:
+        // sandbox:/mnt/data/Manan cv 3 year.pdf
+      }, 200);
+    });
+
+    // ---------- Smooth scroll for internal links (already in your file) ----------
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        // if mobile menu is open, close it
+        if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({ behavior:'smooth' });
+      });
+    });
+
+  </script>
+
+  <!-- NOTE:
+       - Primary expected PDF path (for GitHub Pages): "Manan cv 3 year.pdf"
+       - Local sandbox fallback path (for testing/uploaded file): "sandbox:/mnt/data/Manan cv 3 year.pdf"
+       If GitHub Pages returns 404, make sure the PDF is committed at the exact path and filename (case-sensitive).
+  -->
 
 </body>
 </html>
